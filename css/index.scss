@@ -7,8 +7,8 @@
 }
 
 .body {
-  color: $dark-theme-text;
   background-color: $secondary-dark-theme;
+  color: $dark-theme-text;
   font-family: "Open Sans", sans-serif;
   margin: 0;
 }
@@ -121,8 +121,70 @@
   @include container();
 }
 
+.footer {
+  background-color: $primary-dark-theme;
+}
+
+.footer-nav {
+  padding: 2rem 0;
+}
+
+.footer-nav__link-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav__link-item {
+  list-style: none;
+}
+
+.footer-nav__link {
+  display: flex;
+  width: 1.5rem;
+  transition: $all-transitions;
+}
+
+.footer-nav__link:hover {
+  filter: brightness(150%);
+  transform: scale(1.5);
+}
+
+.footer-nav__link-image {
+  width: 100%;
+}
+
+.footer-nav__credits {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  box-shadow: 0 -0.25rem 0.25rem -0.25rem $light-theme;
+}
+
+.footer-nav__credits-author {
+  color: $primary-highlight;
+  text-decoration: none;
+}
+
+.footer-nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @include container();
+}
+
 @media (min-width: 854px) {
   .gallery-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .footer-nav__link-list {
+    gap: 1.5rem;
+  }
+  .footer-nav__link {
+    width: 2rem;
   }
 }
