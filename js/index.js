@@ -34,7 +34,7 @@ const documentReady = () => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const setObserver = () => {
     const options = {
@@ -51,13 +51,27 @@ const documentReady = () => {
 
     const intersectionObserver = new IntersectionObserver(callBack, options);
     intersectionObserver.observe(root.lastElementChild);
-  }
-
-  const toggleTheme = () => {
-    document.querySelector('.body').classList.toggle('body--light');
-    headerNavThemeIconContainer.classList.toggle('header-nav__theme-icon-container--active');
   };
 
+  const toggleTheme = () => {
+    const body = document.querySelector('.body');
+    body.classList.toggle('body--light');
+    headerNavThemeIconContainer.classList.toggle('header-nav__theme-icon-container--active');
+
+    if (body.classList.contains('body--light')) {
+      localStorage.setItem('darkMode', 'false');
+    } else {
+      localStorage.setItem('darkMode', 'true');
+    }
+  };
+
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.querySelector('.body').classList.remove('body--light');
+    headerNavThemeIconContainer.classList.remove('header-nav__theme-icon-container--active');
+  } else {
+    document.querySelector('.body').classList.add('body--light');
+    headerNavThemeIconContainer.classList.add('header-nav__theme-icon-container--active');
+  }
   renderLoremPicsum();
   headerNavThemeIconContainer.addEventListener('click', toggleTheme);
 };
