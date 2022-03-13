@@ -3,6 +3,7 @@ const documentReady = () => {
 
   const root = document.getElementById('root');
   const headerNavThemeIconContainer = document.getElementById('headerNavThemeIconContainer');
+
   let i = 1;
   let page = 1;
   const limit = 6;
@@ -72,8 +73,10 @@ const documentReady = () => {
     document.querySelector('.body').classList.add('body--light');
     headerNavThemeIconContainer.classList.add('header-nav__theme-icon-container--active');
   }
-  renderLoremPicsum();
+
   headerNavThemeIconContainer.addEventListener('click', toggleTheme);
+
+  renderLoremPicsum();
 };
 
 document.addEventListener('DOMContentLoaded', documentReady);
