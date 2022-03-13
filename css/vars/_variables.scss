@@ -1,0 +1,23 @@
+$primary-dark-theme: #20232a;
+$secondary-dark-theme: #282c34;
+$dark-theme-text: #fff;
+$dark-theme-shadow: #999;
+$light-theme-text: #000;
+$light-theme-shadow: #20232a80;
+$button-color: #61dafb;
+$button-color-active: #fff;
+$primary-highlight: #61dafb;
+$secondary-highlight: #ffd700;
+$padding-section: 3rem 0;
+$border-radius: 0.5rem;
+$all-transitions: all 0.25s;
+
+:root {
+  --padding-container: 0 2rem;
+}
+
+@media (min-width: 854px) {
+  :root {
+    --padding-container: 0;
+  }
+}
