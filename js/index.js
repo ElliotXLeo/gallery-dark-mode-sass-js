@@ -2,11 +2,12 @@
 const documentReady = () => {
 
   const root = document.getElementById('root');
+  const headerNavThemeIconContainer = document.getElementById('headerNavThemeIconContainer');
   let i = 1;
   let page = 1;
   const limit = 6;
 
-  const getLoremPicsum = async () => {
+  const renderLoremPicsum = async () => {
     try {
       const response = await axios.get(`https://picsum.photos/v2/list?page=${page}&limit=${limit}`);
       const data = response.data;
@@ -43,7 +44,7 @@ const documentReady = () => {
     const callBack = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          getLoremPicsum();
+          renderLoremPicsum();
         }
       });
     }
@@ -52,7 +53,13 @@ const documentReady = () => {
     intersectionObserver.observe(root.lastElementChild);
   }
 
-  getLoremPicsum();
+  const toggleTheme = () => {
+    document.querySelector('.body').classList.toggle('body--light');
+    headerNavThemeIconContainer.classList.toggle('header-nav__theme-icon-container--active');
+  };
+
+  renderLoremPicsum();
+  headerNavThemeIconContainer.addEventListener('click', toggleTheme);
 };
 
 document.addEventListener('DOMContentLoaded', documentReady);

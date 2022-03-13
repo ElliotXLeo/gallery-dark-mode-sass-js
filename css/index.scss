@@ -11,6 +11,12 @@
   color: $dark-theme-text;
   font-family: "Open Sans", sans-serif;
   margin: 0;
+  transition: $all-transitions;
+
+  &--light {
+    background-color: $secondary-light-theme;
+    color: $light-theme-text;
+  }
 }
 
 .header {
@@ -20,6 +26,12 @@
   z-index: 100;
   background-color: $primary-dark-theme;
   box-shadow: 0 0 0.25rem 0 $dark-theme-shadow;
+  transition: $all-transitions;
+
+  .body--light & {
+    background-color: $primary-light-theme;
+    box-shadow: 0 0 0.25rem 0 $light-theme-shadow;
+  }
 }
 
 .header-nav {
@@ -29,6 +41,11 @@
     font-size: 2rem;
     text-decoration: none;
     color: $dark-theme-text;
+    transition: $all-transitions;
+
+    .body--light & {
+      color: $light-theme-text;
+    }
   }
 
   &__link-list {
@@ -49,6 +66,10 @@
     color: $dark-theme-text;
     font-weight: 700;
     transition: $all-transitions;
+
+    .body--light & {
+      color: $light-theme-text;
+    }
   }
 
   &__link:hover {
@@ -66,29 +87,34 @@
     border: none;
     cursor: pointer;
     padding: 0 0.25rem;
+    transition: $all-transitions;
+
     &::after {
       content: "";
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translateY(-50%);
+      transform: translate(0, -50%);
       background: $primary-light-theme;
       width: 2.125rem;
       height: 2.125rem;
       border-radius: 50%;
-      transition: $all-transitions;
       box-shadow: 0 0 0.5rem 0 $dark-theme-shadow;
+      transition: $all-transitions;
     }
+
     &--active {
-      background: $primary-light-theme;
+      background: $secondary-highlight;
+
       &::after {
         background: $primary-dark-theme;
-        left: inherit;
-        right: 0;
+        left: 100%;
+        transform: translate(-100%, -50%);
         box-shadow: 0 0 0.5rem 0 $light-theme-shadow;
       }
     }
   }
+
   &__theme-icon {
     font-size: 1.25rem;
   }
@@ -109,6 +135,7 @@
 
 .gallery {
   padding: $padding-section;
+
   &__card {
     box-sizing: border-box;
     display: flex;
@@ -119,7 +146,13 @@
     border-radius: $border-radius;
     box-shadow: 0 0 1rem 0 $dark-theme-shadow;
     transition: $all-transitions;
+
+    .body--light & {
+      background-color: $primary-light-theme;
+      box-shadow: 0 0 1rem 0 $light-theme-shadow;
+    }
   }
+
   &__card-image-container {
     height: 12.5rem;
     border-radius: $border-radius;
@@ -127,28 +160,42 @@
     margin: 0;
     margin-top: -2rem;
   }
+
   &__card-image {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
+
   &__card-button-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+
   &__card-button {
     text-decoration: none;
-    background-color: $button-color;
+    background-color: $dark-button;
     color: $light-theme-text;
     padding: 0.5rem;
     text-align: center;
     font-weight: 600;
     border-radius: $border-radius;
     transition: $all-transitions;
+
     &:hover,
     &--active {
-      background-color: $button-color-active;
+      background-color: $dark-button-active;
+    }
+
+    .body--light & {
+      background-color: $light-button;
+      color: $dark-theme-text;
+
+      &:hover,
+      &--active {
+        background-color: $light-button-active;
+      }
     }
   }
 }
@@ -162,10 +209,18 @@
 
 .footer {
   background-color: $primary-dark-theme;
+  box-shadow: 0 0 0.25rem 0 $dark-theme-shadow;
+  transition: $all-transitions;
+
+  .body--light & {
+    background-color: $primary-light-theme;
+    box-shadow: 0 0 0.25rem 0 $light-theme-shadow;
+  }
 }
 
 .footer-nav {
   padding: 2rem 0;
+
   &__link-list {
     display: flex;
     align-items: center;
@@ -200,6 +255,11 @@
     margin: 0;
     padding-top: 0.5rem;
     box-shadow: 0 -0.25rem 0.25rem -0.25rem $primary-light-theme;
+    transition: $all-transitions;
+
+    .body--light & {
+      box-shadow: 0 -0.25rem 0.25rem -0.25rem $primary-dark-theme;
+    }
   }
 
   &__credits-author {
