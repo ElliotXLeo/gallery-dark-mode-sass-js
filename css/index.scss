@@ -6,6 +6,22 @@
   padding: var(--padding-container);
 }
 
+@mixin grid-columns-gap($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+
+  // @media (min-width: 854px) {
+  //   grid-template-columns: repeat(3, 1fr);
+  // }
+}
+
+@mixin desktop() {
+  @media (min-width: 854px) {
+    @content;
+  }
+}
+
 .body {
   background-color: var(--secondary-theme-color);
   color: var(--text-color);
@@ -138,9 +154,7 @@
   }
 
   &__card-button-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    @include grid-columns-gap(2, 1rem);
   }
 
   &__card-button {
@@ -161,9 +175,7 @@
 }
 
 .gallery-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem 2rem;
+  @include grid-columns-gap(1, 3rem 2rem);
   @include container();
 }
 
@@ -183,6 +195,10 @@
     gap: 1rem;
     margin: 0;
     padding: 0;
+
+    @include desktop() {
+      gap: 1.5rem;
+    }
   }
 
   &__link-item {
@@ -193,6 +209,10 @@
     display: flex;
     width: 1.5rem;
     transition: $all-transitions;
+
+    @include desktop() {
+      width: 2rem;
+    }
   }
 
   &__link:hover {
@@ -209,7 +229,7 @@
     font-size: 0.8rem;
     margin: 0;
     padding-top: 0.5rem;
-    box-shadow: 0 -0.25rem 0.25rem -0.25rem var(--primary-theme-color);
+    box-shadow: 0 -0.25rem 0.25rem -0.25rem var(--shadow-color);
     transition: $all-transitions;
   }
 
@@ -228,12 +248,6 @@
 
 @media (min-width: 854px) {
   .gallery-container {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .footer-nav__link-list {
-    gap: 1.5rem;
-  }
-  .footer-nav__link {
-    width: 2rem;
+    @include grid-columns-gap(3, 3rem 2rem);
   }
 }
